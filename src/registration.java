@@ -19,6 +19,8 @@ import java.util.logging.Logger;
  */
 public class registration extends javax.swing.JFrame {
 
+    helper h=new helper();
+    numbergenerate gen=new numbergenerate();
     /**
      * Creates new form student
      */
@@ -40,16 +42,16 @@ public class registration extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
-        roll = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
+        roll = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         hostel = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
         exitbutton = new javax.swing.JButton();
-        useridtextbox = new javax.swing.JTextField();
+        userid = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FORM");
@@ -69,9 +71,9 @@ public class registration extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("HOSTEL");
 
-        name.addActionListener(new java.awt.event.ActionListener() {
+        phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
+                phoneActionPerformed(evt);
             }
         });
 
@@ -80,6 +82,7 @@ public class registration extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 51, 255));
         jLabel6.setText("REGISTER");
 
+        submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/save.png"))); // NOI18N
         submit.setText("SUBMIT");
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +90,7 @@ public class registration extends javax.swing.JFrame {
             }
         });
 
+        exitbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete-icon.png"))); // NOI18N
         exitbutton.setText("EXIT");
         exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,16 +114,16 @@ public class registration extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(useridtextbox, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(userid, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(roll))
                         .addGap(0, 23, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addComponent(submit)
+                                .addGap(56, 56, 56)
+                                .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -127,12 +131,11 @@ public class registration extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3))
                                 .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(hostel)
-                                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(phone, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                    .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                    .addComponent(hostel, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                    .addComponent(password))))
                         .addGap(16, 16, 16))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
@@ -153,7 +156,7 @@ public class registration extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(useridtextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -163,7 +166,7 @@ public class registration extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(hostel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)))
@@ -173,7 +176,7 @@ public class registration extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,40 +187,32 @@ public class registration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+    private void phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
+    }//GEN-LAST:event_phoneActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        String sname,sroll,spassword,shostel,suserid;
-        Integer sphone;
+        String sname,sroll,spassword,shostel,suserid,sphone,temp;
         sname=name.getText();
         sroll=roll.getText();
-        suserid=useridtextbox.getText();
-        sphone=Integer.parseInt(String.valueOf(phone.getText()));
-        spassword=password.getText();
+        suserid=userid.getText();
+        sphone=String.valueOf(phone.getText());
+        spassword=String.valueOf(password.getText());
         shostel=hostel.getText();
-        try{
+        temp="C"+gen.generate();
            // Class.forName("com.mysql.jdbc.Driver");
-            Connection con;
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/messbilling?zeroDateTimeBehavior=convertToNull","root","1234");
             String query;
-            query="insert into student(name,roll,phone,password,userid) values ('"+sname+"','"+sroll+"','"+sphone+"','"+spassword+"','"+suserid+"')";
-            PreparedStatement ps=con.prepareStatement(query);
-            ps.executeUpdate();
-            System.out.printf("Success");
-            name.setText("");
-            roll.setText("");
+            query="insert into student(name,roll,phone,password,userid,cardid) values ('"+sname+"','"+sroll+"','"+sphone+"','"+spassword+"','"+suserid+"','"+temp+"')";
+            h.runquery(query,0);
+                                
             phone.setText("");
+            roll.setText("");
+            name.setText("");
             password.setText("");
             hostel.setText("");
-            useridtextbox.setText("");
+            userid.setText("");
                         
             
-        }
-        catch (SQLException ex) {        
-            System.err.println(ex);
-                    }        
         
         
         
@@ -281,10 +276,10 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField roll;
     private javax.swing.JButton submit;
-    private javax.swing.JTextField useridtextbox;
+    private javax.swing.JTextField userid;
     // End of variables declaration//GEN-END:variables
 }

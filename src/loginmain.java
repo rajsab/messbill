@@ -1,3 +1,4 @@
+import java.awt.Toolkit;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
@@ -19,8 +20,15 @@ import java.util.logging.Logger;
 public class loginmain extends javax.swing.JFrame {
 
     String id,pass;
-       public static String comboboxvalue,n,q;
+       public static String comboboxvalue,n,q,roll;
      
+       
+       
+       
+    public void close(){
+        WindowEvent c= new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(c);
+    }
     
     /**
      * Creates new form loginmain
@@ -53,7 +61,7 @@ public class loginmain extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setBounds(new java.awt.Rectangle(40, 60, 100, 200));
         setIconImage(getIconImage());
@@ -62,6 +70,9 @@ public class loginmain extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, null));
+        jPanel1.setLayout(null);
+        jPanel1.add(useridtextbox);
+        useridtextbox.setBounds(110, 105, 132, 28);
 
         logincombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Student", "Admin", "Mess" }));
         logincombobox.addActionListener(new java.awt.event.ActionListener() {
@@ -69,106 +80,60 @@ public class loginmain extends javax.swing.JFrame {
                 logincomboboxActionPerformed(evt);
             }
         });
+        jPanel1.add(logincombobox);
+        logincombobox.setBounds(111, 194, 132, 30);
 
+        submitbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Login-in-icon.png"))); // NOI18N
         submitbutton.setText("Login");
         submitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitbuttonActionPerformed(evt);
             }
         });
+        jPanel1.add(submitbutton);
+        submitbutton.setBounds(120, 290, 90, 30);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("USER ID");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(12, 116, 55, 17);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("PASSWORD");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(12, 156, 79, 20);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("KIND");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(12, 207, 35, 17);
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("LOGIN");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(12, 13, 81, 36);
+        jPanel1.add(passwordfeild);
+        passwordfeild.setBounds(111, 148, 132, 28);
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\rajdeep\\Downloads\\Nitc_logo.png")); // NOI18N
         jLabel6.setText("jLabel6");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(logincombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(useridtextbox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(passwordfeild, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel2)
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordfeild, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(useridtextbox, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(logincombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(56, 56, 56)
-                        .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0))))
-        );
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(240, 10, 360, 360);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -179,13 +144,13 @@ public class loginmain extends javax.swing.JFrame {
         id=String.valueOf(useridtextbox.getText());
         pass=String.valueOf(passwordfeild.getText());
         String sql="select name from "+comboboxvalue+" where userid='"+id+"' and password='"+pass+"'";
+        String sql2="select roll from student where userid='"+id+"' and password='"+pass+"'";
+        functional(sql,sql2);
         
-        functional(sql);
-       
          //.  System.out.print(n);
         // TODO add your handling code here:
     }//GEN-LAST:event_submitbuttonActionPerformed
-    public void functional(String sql){
+    public void functional(String sql,String sql2){
         Connection con;
         try {
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/messbilling?zeroDateTimeBehavior=convertToNull","root","1234");
@@ -193,19 +158,40 @@ public class loginmain extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             
             if(rs.next()){
-             JOptionPane.showMessageDialog(null,"Welcome");
+             JOptionPane.showMessageDialog(null,"welcome");
                    
                    
                    
                    n=rs.getString(1);
                    q=String.valueOf(useridtextbox.getText());
-                   studentinfo al =new studentinfo();
-                   al.setVisible(true);
-                   al.fix(n,q);
-                   
-                  new loginmain().setVisible(false);
-                  // registration s = new registration();
-              //  s.setVisible(true);
+                  
+                switch (comboboxvalue) {
+                    case "Student":
+                        try{
+                            PreparedStatement p=con.prepareStatement(sql2);
+                            ResultSet r=p.executeQuery();
+                            if(r.next())
+                                roll=r.getString(1);
+                        }
+                        catch(Exception e){
+                            JOptionPane.showMessageDialog(null,e);
+                        }
+                        studentinfo al =new studentinfo();
+                        close();
+                        al.setVisible(true);
+                        al.fix(n,id,pass,roll);
+                        
+                        break;
+                    case "Admin":
+                        adminpage a=new adminpage();
+                        a.setVisible(true);
+                        close();
+                        a.getid(n);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null,"oopppsss");
+                        break;
+                }
                 
             }
             else{
@@ -213,13 +199,14 @@ public class loginmain extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Sorry insert correct password and uid");
 
             }
-
+             
         }
         catch (SQLException ex) {
             System.err.println(ex);
         }
-
+       
     }
+   
     
     
     private void logincomboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logincomboboxActionPerformed
@@ -261,6 +248,7 @@ public class loginmain extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new loginmain().setVisible(true);
+                
             }
         });
     }

@@ -15,9 +15,9 @@ import net.proteanit.sql.DbUtils;
  * @author rajdeep
  */
 public class studentinfo extends javax.swing.JFrame {
+helper h=new helper();
 
-   
-    public static String m,uid,month;
+    public static String m,uid,month,pass,name,ro;
     
     
     
@@ -31,36 +31,17 @@ public class studentinfo extends javax.swing.JFrame {
        // loginmain l=new loginmain();
             initComponents();    
     }
-    public Connection connect(){
-        try{
-            Connection c;
-            c=DriverManager.getConnection("jdbc:mysql://localhost:3306/messbilling?zeroDateTimeBehavior=convertToNull","root","1234");
-            return(c);
-        }
-        catch(Exception e){
-            return(null);
-        }
-       
-    }      
+      
     
     
-    public void fun(String query){
-          try {
-            Connection con=connect();          
-            PreparedStatement ps=con.prepareStatement(query);
-            ResultSet rs=ps.executeQuery();
-            studenttable.setModel(DbUtils.resultSetToTableModel(rs));
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
-            System.err.println(ex);
-        }
-    }
-    public void fix(String n,String g){
+    public void fix(String n,String id,String password,String r){
    try{
-       n="welcome "+n;   
+       name=n;
+       n="welcome "+n;
        welcomelabel.setText(n);
-          uid=g;
+          uid=id;
+          pass=password;
+          ro=r;
         }
         catch(Exception e){
             System.out.print(e);
@@ -86,6 +67,8 @@ public class studentinfo extends javax.swing.JFrame {
         totallb1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setResizable(false);
         addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 formMouseWheelMoved(evt);
@@ -121,7 +104,7 @@ public class studentinfo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(studenttable);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "select", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "select", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -210,19 +193,32 @@ public class studentinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
  
     private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
-        String sql="select m.name,e.date,e.amount from mess m,eat e where e.userid='"+uid+"' and e.messid=m.id and date like '"+m+"'";
-        String sql2="select sum(amount) from eat where userid='"+uid+"'";
-        fun(sql);
+        String sql="select m.name as name ,e.date as date,e.amount as amount from mess m,eat e where e.messid=m.id and date like '"+m+"'and e.roll='"+ro+"'";
+        String sql2="select sum(amount) from eat where roll='"+ro+"'";
+        String sql3="select roll from student where userid='"+uid+"' and password='"+pass+"' and name='"+name+"'";
+       
         try{
-          Connection con2;
-        con2=connect();
-        PreparedStatement pt=con2.prepareStatement(sql2);
-        ResultSet rs=pt.executeQuery();
-        if(rs.next())
-        totallb.setText(rs.getString("sum(amount)"));
+          Connection con=h.connect();
+         /* PreparedStatement p=con.prepareStatement(sql3);
+          ResultSet r=p.executeQuery();
+          if(r.next()){
+              ro=r.getString(1);
+          }
+          */
+        //  System.out.println(ro);
+          PreparedStatement pt=con.prepareStatement(sql);
+          ResultSet rs=pt.executeQuery();
+          studenttable.setModel(DbUtils.resultSetToTableModel(rs));
+          PreparedStatement ps=con.prepareStatement(sql2);
+          ResultSet rt=ps.executeQuery();
+          if(rt.next())
+              totallb.setText(rt.getString("sum(amount)"));
+             
+              
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
+            System.exit(1);
         }
         
         
