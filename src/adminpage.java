@@ -30,7 +30,7 @@ import java.awt.print.*;
 public class adminpage extends javax.swing.JFrame {
 
     helper h=new helper();
-    static String student,mess,id,identity;
+    static String student,mess,id,identity,sql;
     //static int flag=0;
      /**
      * Creates new form adminpage
@@ -330,12 +330,12 @@ public void cleartable(){
 
         JOptionPane.showMessageDialog(null,"You really want to Delete");
         if(mess.equals("mess")){
-        String sql="delete from mess where name='"+identity+"'";
+        sql="delete from mess where name='"+identity+"'";
         h.runquery(sql,0);
         
         }
         else if(student.equals("student")){
-            String sql="delete from student where roll='"+identity+"'";
+            sql="delete from student where roll='"+identity+"'";
             h.runquery(sql,0);
         }
          cleartable(); 
@@ -360,7 +360,7 @@ public void cleartable(){
             try{
                 Connection con;
                 con=h.connect();
-                String sql="select name as NAME,userid as USERID,password as PASSWORD from student where roll='"+identity+"'";
+                sql="select name as NAME,userid as USERID,password as PASSWORD from student where roll='"+identity+"'";
                 PreparedStatement ps=con.prepareStatement(sql);
                 PreparedStatement p=con.prepareStatement(sql);
                 ResultSet rs=ps.executeQuery();
@@ -385,7 +385,7 @@ public void cleartable(){
             try{
                 Connection con;
                 con=h.connect();
-                String sql="select name as NAME,userid as USERID,password as PASSWORD from mess where name='"+identity+"'";
+                sql="select name as NAME,userid as USERID,password as PASSWORD from mess where name='"+identity+"'";
                PreparedStatement ps=con.prepareStatement(sql);
                 PreparedStatement p=con.prepareStatement(sql);
                 ResultSet rs=ps.executeQuery();

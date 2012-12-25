@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class loginmain extends javax.swing.JFrame {
 
     String id,pass;
-       public static String comboboxvalue,n,q,roll;
+       public static String comboboxvalue,n,q,roll,sql,sql2;
      
        
        
@@ -140,8 +140,8 @@ public class loginmain extends javax.swing.JFrame {
 
         id=String.valueOf(useridtextbox.getText());
         pass=String.valueOf(passwordfeild.getText());
-        String sql="select name from "+comboboxvalue+" where userid='"+id+"' and password='"+pass+"'";
-        String sql2="select roll from student where userid='"+id+"' and password='"+pass+"'";
+        sql="select name from "+comboboxvalue+" where userid='"+id+"' and password='"+pass+"'";
+        sql2="select roll from student where userid='"+id+"' and password='"+pass+"'";
         functional(sql,sql2);
         
          //.  System.out.print(n);

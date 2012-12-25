@@ -20,7 +20,7 @@ import java.awt.print.*;
 public class studentinfo extends javax.swing.JFrame {
 private helper h=new helper();
 
-    public static String m,uid,month,pass,name,ro;
+    public static String m,uid,month,pass,name,ro,sql,sql2,sql3,sql4;
     
     /**
      * Creates new form student
@@ -199,10 +199,10 @@ private helper h=new helper();
     }//GEN-LAST:event_jComboBox1ActionPerformed
  
     private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
-        String sql="select m.name as name ,e.date as date,e.amount as amount from mess m,eat e where e.messid=m.userid and date like '"+m+"'and e.roll='"+ro+"'";
-        String sql2="select sum(amount) from eat where roll='"+ro+"' and date like'"+m+"'";
-        String sql3="select roll from student where userid='"+uid+"' and password='"+pass+"' and name='"+name+"'";
-        String sql4="select sum(amount) from eat where roll='"+ro+"'";
+        sql="select m.name as name ,e.date as date,e.amount as amount from mess m,eat e where e.messid=m.userid and date like '"+m+"'and e.roll='"+ro+"'";
+        sql2="select sum(amount) from eat where roll='"+ro+"' and date like'"+m+"'";
+        sql3="select roll from student where userid='"+uid+"' and password='"+pass+"' and name='"+name+"'";
+        sql4="select sum(amount) from eat where roll='"+ro+"'";
        
         try{
           Connection con=getH().connect();

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class messregistration extends javax.swing.JFrame {
 
     private helper h=new helper();
-    private String name,uid,pass,phone;
+    private String name,uid,pass,phone,sql;
     private int cost;
     
     
@@ -185,7 +185,7 @@ public class messregistration extends javax.swing.JFrame {
            
                
         if(ownerphonetextfield.getText().length()==10){
-            String sql="insert into mess(name,userid,password,cost,type,owner,contactno) values ('"+name+"','"+uid+"','"+pass+"','"+cost+"','"+messtype+"','"+ownernametextfield.getText()+"','"+ownerphonetextfield.getText()+"')";
+            sql="insert into mess(name,userid,password,cost,type,owner,contactno) values ('"+name+"','"+uid+"','"+pass+"','"+cost+"','"+messtype+"','"+ownernametextfield.getText()+"','"+ownerphonetextfield.getText()+"')";
             getH().runquery(sql,0);
         }
         else{

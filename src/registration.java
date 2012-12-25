@@ -23,7 +23,7 @@ public class registration extends javax.swing.JFrame {
 
     helper h=new helper();
     numbergenerate gen=new numbergenerate();
-    
+    String sname,sroll,spassword,shostel,suserid,sphone,temp,sl;
     /**
      * Creates new form student
      */
@@ -171,7 +171,6 @@ public class registration extends javax.swing.JFrame {
     }//GEN-LAST:event_phoneActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        String sname,sroll,spassword,shostel,suserid,sphone,temp;
         sname=(name.getText());
         sname.toUpperCase();
         sroll=roll.getText();
@@ -184,7 +183,7 @@ public class registration extends javax.swing.JFrame {
         
            try{
                char fl=sroll.charAt(0);
-        String sl=sroll.substring(7,9);
+        sl=sroll.substring(7,9);
         temp=fl+cardnumber()+gen.generate()+sl;
             String query;
             query="insert into student(name,roll,phone,password,userid,cardid) values ('"+sname+"','"+sroll+"','"+sphone+"','"+spassword+"','"+suserid+"','"+temp+"')";
@@ -193,7 +192,7 @@ public class registration extends javax.swing.JFrame {
                 phone.setText("");
             roll.setText("");
             name.setText("");
-//            password.setText("");
+            password.setText("");
             hostel.setText("");
             userid.setText("");
 
