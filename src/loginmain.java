@@ -69,20 +69,23 @@ public class loginmain extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, null));
-        jPanel1.setLayout(null);
-        jPanel1.add(useridtextbox);
-        useridtextbox.setBounds(110, 105, 132, 28);
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.gray, java.awt.Color.green));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        useridtextbox.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        useridtextbox.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(102, 102, 255), null));
+        jPanel1.add(useridtextbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 132, -1));
+
+        logincombobox.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         logincombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Student", "Admin", "Mess" }));
         logincombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logincomboboxActionPerformed(evt);
             }
         });
-        jPanel1.add(logincombobox);
-        logincombobox.setBounds(111, 194, 132, 30);
+        jPanel1.add(logincombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 132, 30));
 
+        submitbutton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         submitbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Login-in-icon.png"))); // NOI18N
         submitbutton.setText("Login");
         submitbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,49 +93,43 @@ public class loginmain extends javax.swing.JFrame {
                 submitbuttonActionPerformed(evt);
             }
         });
-        jPanel1.add(submitbutton);
-        submitbutton.setBounds(120, 290, 90, 30);
+        jPanel1.add(submitbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 90, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("USER ID");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(12, 116, 55, 17);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("PASSWORD");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(12, 156, 79, 20);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("KIND");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(12, 207, 35, 17);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poor Richard", 0, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("LOGIN");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(12, 13, 81, 36);
-        jPanel1.add(passwordfeild);
-        passwordfeild.setBounds(111, 148, 132, 28);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 140, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\rajdeep\\Downloads\\Nitc_logo.png")); // NOI18N
+        passwordfeild.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        passwordfeild.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(102, 102, 255), null));
+        jPanel1.add(passwordfeild, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 132, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Nitc_logo.png"))); // NOI18N
         jLabel6.setText("jLabel6");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(240, 10, 360, 360);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 360, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -170,8 +167,9 @@ public class loginmain extends javax.swing.JFrame {
                         try{
                             PreparedStatement p=con.prepareStatement(sql2);
                             ResultSet r=p.executeQuery();
-                            if(r.next())
+                            if(r.next()) {
                                 roll=r.getString(1);
+                            }
                         }
                         catch(Exception e){
                             JOptionPane.showMessageDialog(null,e);
@@ -201,10 +199,12 @@ public class loginmain extends javax.swing.JFrame {
             }
              
         }
-        catch (SQLException ex) {
-            System.err.println(ex);
+        catch (SQLSyntaxErrorException e) {
+            JOptionPane.showMessageDialog(null,"Please select from kind.");
         }
-       
+        catch(SQLException ex){
+            System.err.print(ex);
+        }
     }
    
     

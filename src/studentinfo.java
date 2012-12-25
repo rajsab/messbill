@@ -1,7 +1,10 @@
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.sql.*;
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
-
+import java.text.*;
+import java.awt.print.*;
 
 
 
@@ -15,12 +18,9 @@ import net.proteanit.sql.DbUtils;
  * @author rajdeep
  */
 public class studentinfo extends javax.swing.JFrame {
-helper h=new helper();
+private helper h=new helper();
 
     public static String m,uid,month,pass,name,ro;
-    
-    
-    
     
     /**
      * Creates new form student
@@ -30,6 +30,11 @@ helper h=new helper();
         // l.setVisible(false);
        // loginmain l=new loginmain();
             initComponents();    
+            
+    }
+    public void close(){
+        WindowEvent clo= new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(clo);
     }
       
     
@@ -63,10 +68,15 @@ helper h=new helper();
         welcomelabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         submitbutton = new javax.swing.JButton();
-        totallb = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        printbutton = new javax.swing.JButton();
         totallb1 = new javax.swing.JLabel();
+        totallabel = new javax.swing.JLabel();
+        totallb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setResizable(false);
         addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -74,6 +84,7 @@ helper h=new helper();
                 formMouseWheelMoved(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         studenttable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         studenttable.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,79 +115,74 @@ helper h=new helper();
         });
         jScrollPane1.setViewportView(studenttable);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 450, 270));
+
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "select", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 125, -1));
 
-        welcomelabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        welcomelabel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        welcomelabel.setForeground(new java.awt.Color(0, 51, 204));
         welcomelabel.setText("jLabel1");
+        getContentPane().add(welcomelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 13, 267, -1));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Select month");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
+        submitbutton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         submitbutton.setText("Submit");
         submitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitbuttonActionPerformed(evt);
             }
         });
+        getContentPane().add(submitbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 80, 30));
 
-        totallb.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Login-out-icon.png"))); // NOI18N
+        jButton1.setText("Log-out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
-        totallb1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        totallb1.setText("Total");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.gray, java.awt.Color.green));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(submitbutton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(welcomelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(totallb1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(totallb, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(14, 14, 14)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(welcomelabel)
-                .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(47, 47, 47)
-                .addComponent(submitbutton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totallb)
-                    .addComponent(totallb1))
-                .addGap(111, 111, 111))
-        );
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel1.setText("Total Amount");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        printbutton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        printbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Printer-icon.png"))); // NOI18N
+        printbutton.setText("Print");
+        printbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printbuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(printbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 90, 30));
+
+        totallb1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        totallb1.setText("Monthly Bill");
+        jPanel1.add(totallb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 100, -1));
+
+        totallabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(totallabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
+
+        totallb.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel1.add(totallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 52, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,27 +199,25 @@ helper h=new helper();
     }//GEN-LAST:event_jComboBox1ActionPerformed
  
     private void submitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbuttonActionPerformed
-        String sql="select m.name as name ,e.date as date,e.amount as amount from mess m,eat e where e.messid=m.id and date like '"+m+"'and e.roll='"+ro+"'";
-        String sql2="select sum(amount) from eat where roll='"+ro+"'";
+        String sql="select m.name as name ,e.date as date,e.amount as amount from mess m,eat e where e.messid=m.userid and date like '"+m+"'and e.roll='"+ro+"'";
+        String sql2="select sum(amount) from eat where roll='"+ro+"' and date like'"+m+"'";
         String sql3="select roll from student where userid='"+uid+"' and password='"+pass+"' and name='"+name+"'";
+        String sql4="select sum(amount) from eat where roll='"+ro+"'";
        
         try{
-          Connection con=h.connect();
-         /* PreparedStatement p=con.prepareStatement(sql3);
-          ResultSet r=p.executeQuery();
-          if(r.next()){
-              ro=r.getString(1);
-          }
-          */
-        //  System.out.println(ro);
+          Connection con=getH().connect();
           PreparedStatement pt=con.prepareStatement(sql);
           ResultSet rs=pt.executeQuery();
           studenttable.setModel(DbUtils.resultSetToTableModel(rs));
           PreparedStatement ps=con.prepareStatement(sql2);
           ResultSet rt=ps.executeQuery();
+          PreparedStatement pq=con.prepareStatement(sql4);
+          ResultSet r=pq.executeQuery();
           if(rt.next())
               totallb.setText(rt.getString("sum(amount)"));
-             
+          if(r.next()){
+              totallabel.setText(r.getString("sum(amount)"));
+          }   
               
         }
         catch(Exception e){
@@ -228,6 +232,29 @@ helper h=new helper();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_submitbuttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loginmain l=new loginmain();
+        l.setVisible(true);
+              
+        close();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void printbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printbuttonActionPerformed
+ 
+        MessageFormat header = new MessageFormat(name+" Mess Bill");
+        MessageFormat footer = new MessageFormat("Page,{0,number,integer}");
+        try{
+            studenttable.print(JTable.PrintMode.NORMAL,header,footer);
+        }
+        catch(java.awt.print.PrinterException e){
+            System.err.format("Cannot print %s %n",e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_printbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,8 +286,7 @@ helper h=new helper();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                loginmain log=new loginmain();
-                        log.setVisible(false);
+               
                 new studentinfo().setVisible(true);
                 
             }
@@ -268,13 +294,32 @@ helper h=new helper();
        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton printbutton;
     private javax.swing.JTable studenttable;
     private javax.swing.JButton submitbutton;
+    private javax.swing.JLabel totallabel;
     private javax.swing.JLabel totallb;
     private javax.swing.JLabel totallb1;
     private javax.swing.JLabel welcomelabel;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the h
+     */
+    public helper getH() {
+        return h;
+    }
+
+    /**
+     * @param h the h to set
+     */
+    public void setH(helper h) {
+        this.h = h;
+    }
 }

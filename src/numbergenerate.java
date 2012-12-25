@@ -20,8 +20,8 @@ public String a;
         alphabet[j]=(char) i;
         j++;
         }
-        for(j=0;j<7;j++){
-            if(j<3){
+        for(j=0;j<4;j++){
+            if(j<1){
                 k=r.nextInt(24);
                 a=a+alphabet[k];
             }
